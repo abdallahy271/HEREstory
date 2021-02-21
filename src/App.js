@@ -1,6 +1,8 @@
 import React, {useState, useRef} from 'react';
 import './App.css';
 import firebase from 'firebase/app';
+import GoogleMap from './components/GoogleMap'
+
 import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore';
@@ -29,7 +31,17 @@ const firestore = firebase.firestore();
 
 
 const MainPage = () => {
-  return (<h1>Hello User!</h1>)
+  return (
+    <>
+    <h1></h1>
+     <div className="navbar-header" id="welcome">
+          <h1 className="navbar-brand" >Hello User!</h1>
+      </div>
+      <br/>
+  <GoogleMap/>
+  </>
+  )
+
 }
 
 const SignIn = () => {
@@ -68,7 +80,15 @@ const SignIn = () => {
 
 function SignOut(){
   return auth.currentUser && (
-    <button className="sign-out" onClick={() => auth.signOut()}> Sign Out</button>
+    <nav className="navbar navbar-inverse">
+      <div className="container-fluid">
+      <ul className="nav navbar-nav navbar-right">
+    <li>
+    <a className="glyphicon glyphicon-log-out" onClick={() => auth.signOut()}> Signout</a>
+    </li></ul>
+    </div>
+    </nav>
+
   )
 }
 
